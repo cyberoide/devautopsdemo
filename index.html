@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevAutOps - No-Code DevOps Automation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #081028;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 4rem 0 3rem;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #a0a9c0;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #1dd05d;
+            color: #ffffff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: background 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #1bc454;
+        }
+
+        /* Main Content Section */
+        .main-content {
+            display: flex;
+            gap: 4rem;
+            align-items: flex-start;
+            margin: 4rem 0;
+        }
+
+        .problem-section {
+            flex: 1;
+        }
+
+        .problem-section h2 {
+            font-size: 3.5rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+        }
+
+        .problem-list {
+            list-style: none;
+        }
+
+        .problem-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            font-size: 1.5rem;
+            color: #e1e5f0;
+        }
+
+        .problem-list li::before {
+            content: "•";
+            color: #1dd05d;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+
+        /* Dashboard Mockup */
+        .dashboard-container {
+            flex: 1;
+            position: relative;
+        }
+
+        .browser-chrome {
+            background: #f0f0f0;
+            border-radius: 12px 12px 0 0;
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background: #ff5f57; }
+        .dot.yellow { background: #ffbd2e; }
+        .dot.green { background: #28ca42; }
+
+        .dashboard-mockup {
+            background: #ffffff;
+            color: #333;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            min-height: 400px;
+        }
+
+        .sidebar-nav {
+            background: #f8f9fa;
+            width: 200px;
+            padding: 1.5rem 0;
+            border-radius: 0 0 0 12px;
+        }
+
+        .nav-item {
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+            cursor: default;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .nav-item:first-child {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .form-content h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            background: #fff;
+            color: #333;
+            pointer-events: none;
+        }
+
+        .form-group input {
+            color: #999;
+        }
+
+        .deploy-button {
+            width: 100%;
+            background: #1a2744;
+            color: #ffffff;
+            padding: 1rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: default;
+            margin-bottom: 1rem;
+            pointer-events: none;
+        }
+
+        .note {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            text-align: center;
+            margin: 6rem 0;
+        }
+
+        .how-it-works h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+        }
+
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            /* background: #1a2744; */
+            border-radius: 12px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+        }
+
+        .step-icon img {
+            width: 118px; /* Adjust size to fit the image */
+            height: 118px; /* Adjust size to fit the image */
+            object-fit: contain;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .step p {
+            color: #a0a9c0;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Features Section */
+        .features {
+            margin: 6rem 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .features-left h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            /* background: #1a2744; */
+            /* border-radius: 8px; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #ffffff;
+        }
+
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+            
+        }
+
+        .feature-text h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-text p {
+            color: #a0a9c0;
+            font-size: 0.9rem;
+        }
+
+        .who-its-for h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .who-its-for p {
+            color: #a0a9c0;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .benefit-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .benefit-list li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #e1e5f0;
+        }
+
+        .benefit-list li::before {
+            content: "•";
+            color: #1dd05d;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a2744;
+            text-align: center;
+            padding: 2rem;
+            color: #8894a6;
+            margin-top: 4rem;
+        }
+        .footer a{
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .dashboard-mockup {
+                flex-direction: column;
+            }
+
+            .sidebar-nav {
+                width: 100%;
+                border-radius: 0;
+            }
+
+            .steps {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .main-title {
+                font-size: 2.5rem;
+            }
+
+            .problem-section h2,
+            .how-it-works h2,
+            .features-left h2,
+            .who-its-for h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="main-title">Offload Repetitive DevOps Tasks<br>with No-Code Dashboards</h1>
+            <p class="subtitle">Empower non-technical teams to safely run infrastructure through no-code dashboards—freeing them</p>
+            <a href="https://devautops-83abb37c112b.herokuapp.com/" class="cta-button">Get Early Access</a>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="problem-section">
+                <h2>DevOps Teams Are Bogged Down with Repetitive Tasks</h2>
+                <ul class="problem-list">
+                    <li>Constant context switching due to ad hoc requests</li>
+                    <li>Repeating routine Infra relevant and maintenance tasks</li>
+                    <li>Limited time for strategic or high-impact engineering work</li>
+                </ul>
+            </div>
+
+            <div class="dashboard-container">
+                <div class="browser-chrome">
+                    <div class="browser-dots">
+                        <div class="dot red"></div>
+                        <div class="dot yellow"></div>
+                        <div class="dot green"></div>
+                    </div>
+                </div>
+                <div class="dashboard-mockup">
+                    <div class="sidebar-nav">
+                        <div class="nav-item">Development Components</div>
+                        <div class="nav-item">Clients</div>
+                        <div class="nav-item">Restoration</div>
+                        <div class="nav-item">Digitisation</div>
+                    </div>
+                    <div class="form-content">
+                        <h3>Demo Environment</h3>
+                        <div class="form-group">
+                            <label>Client Name</label>
+                            <input type="text" value="Client Name" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label>Server Types</label>
+                            <select disabled>
+                                <option>Application Name</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Application Name</label>
+                            <input type="text" value="Application Name" readonly>
+                        </div>
+                        <button class="deploy-button">Deploy</button>
+                    </div>
+                </div>
+                <p class="note">Actions are executed. DevOps stays in control.</p>
+            </div>
+        </div>
+
+        <!-- How It Works -->
+        <section class="how-it-works">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-oHfbY0je2jvX5suVxWUlCiGj8AhDve.png" alt="Design Dashboards Icon">
+                    </div>
+                    <h3>Design Dashboards</h3>
+                    <p>DevOps builds a custom UI with drag, and-drop components</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-gzgqunnlJ4SKVmsxICNMKgCIYsX4sx.png" alt="Connect Logic or Use AI Icon">
+                    </div>
+                    <h3>Connect Logic or Use AI</h3>
+                    <p>Use your own API—or generate it With AI Runs in your AWS</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Axp5nxnPlvtzTkELvsFKC9GswV2iW1.png" alt="Delegate to Teams Icon">
+                    </div>
+                    <h3>Delegate to Teams</h3>
+                    <p>Assign dashboards to users, or teams (eg, sales, QA)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="features">
+            <div class="features-grid">
+                <div class="features-left">
+                    <h2>Features</h2>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="6" height="6" rx="1"/>
+                                <rect x="11" y="3" width="6" height="6" rx="1"/>
+                                <rect x="3" y="11" width="6" height="6" rx="1"/>
+                                <rect x="11" y="11" width="6" height="6" rx="1"/>
+                            </svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Drag-and-Drop Dashboard Builder</h4>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10 3c-3.314 0-6 2.686-6 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6z"/>
+                                <path d="M10 15v2M10 3v2M17 10h-2M5 10H3"/>
+                                <path d="M15.5 4.5l-1.414 1.414M6.914 13.086l-1.414 1.414M15.5 15.5l-1.414-1.414M6.914 6.914l-1.414-1.414"/>
+                            </svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>AI-Generated Backend APIs</h4>
+                            
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="10" cy="7" r="3"/>
+                                <path d="M17 17c0-3.314-2.686-6-6-6H9c-3.314 0-6 2.686-6 6"/>
+                                <path d="M17 7h-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2"/>
+                            </svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Role-Based Access Control</h4>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/>
+                                <path d="M6 8h8M6 12h4"/>
+                                <path d="M14 10l2 2 2-2"/>
+                            </svg>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Auto-Generated Docs</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="who-its-for">
+                    <h2>Who It's For</h2>
+                    <p>Built for startups and engineering teams who need</p>
+                    <ul class="benefit-list">
+                        <li>Reduce DevOps workload</li>
+                        <li>Scale infrastructure support</li>
+                    </ul>
+                    <!-- <a href="https://devautops-83abb37c112b.herokuapp.com/" class="cta-button">Get Early Access</a> -->
+                </div>
+            </div>
+        </section>
+    </div>
+
+   <footer class="footer">
+     <p>Contact us: 
+        <a href="mailto:info@devautops.com">info@devautops.com</a> | 
+        <a href="tel:+923083162302">+92 308 3162302</a>
+    </p>
+    <p>&copy; 2025 DevAutOps. All rights reserved.</p>
+   
+</footer>
+
+</body>
+</html>
